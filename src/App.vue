@@ -1,14 +1,15 @@
 <template>
-  <navBar></navBar>
+    <div class="main-page">
+        <homePage></homePage>
+    </div>
+ 
 </template>
-
 <script>
-import navBar from "@/components/nav-bar";
-
+import homePage from './components/homePage.vue'
 export default {
-  name: 'App',
+  name: 'App', 
   components: {
-    navBar
+    homePage
   }
 }
 </script>
@@ -26,6 +27,10 @@ html,body{
 
 #app {
  width: 100%;
+  height: 100%;
+}
+.main-page{
+   width: 100%;
   height: 100%;
 }
 </style>
