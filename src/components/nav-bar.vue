@@ -15,7 +15,9 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+ 
+};
 </script>
 <style>
 .nav-bar {
@@ -24,6 +26,7 @@ export default {};
   background: #fafafa;
   display: flex;
   justify-content: center;
+  
 }
 .nav-bar__container {
   width: 85%;
@@ -46,31 +49,31 @@ export default {};
   align-items: center;
   justify-content: space-between;
 }
-.nav-bar__sign-in {
-  border: 4px solid #4f4f4f;
-  border-radius: 3px;
-  font-family: "Roboto", sans-serif;
-  color: #4f4f4f;
-  width: 156px;
-  height: 56px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 120%;
-  color: #4f4f4f;
+.nav-bar__sign-in{
+  border: 4px solid #4F4F4F;
+border-radius: 3px;
+font-family: 'Roboto', sans-serif;
+color: #4F4F4F;
+width: 156px;
+height: 56px;
+display: flex;
+justify-content: center;
+align-items: center;
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 120%;
+color: #4F4F4F;
 }
 .nav-bar__logo {
   width: 56px;
   height: 56px;
 }
 .nav-bar__item {
-  font-family: "Roboto", sans-serif;
+ font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 600;
-  color: #4f4f4f;
+  color: #4F4F4F; 
   font-size: 24px;
   line-height: 120%;
 }
