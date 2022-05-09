@@ -7,7 +7,7 @@
           <p>тут почта или контакты</p>
         </div>
         <div class="contact-info__image">
-          <img src="./../../res/Vector.png" alt="" />
+          <img src="./../../resources/Vector.png" alt="" />
         </div>
       </div>
       <div class="footer__authors">
@@ -26,9 +26,6 @@ export default {
 </script>
 <style>
 .footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   background: #4f4f4f;
   height: 245px;
   width: 100%;
@@ -38,11 +35,13 @@ export default {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  margin-top: 50px;
+  padding-top: 64px;
+  
 }
 .footer__contact-info {
   width: 300px;
   height: 100%;
+   
 }
 .footer__contact-info p {
   font-family: "Roboto", sans-serif;
@@ -67,6 +66,7 @@ export default {
 }
 .footer__authors {
   width: 300px;
+ 
 }
 .authors__p p {
   font-family: "Roboto", sans-serif;

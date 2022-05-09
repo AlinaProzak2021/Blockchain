@@ -1,4 +1,4 @@
-# blockchain
+# Blockchain
 
 ## Project setup
 ```

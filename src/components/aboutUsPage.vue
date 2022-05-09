@@ -1,6 +1,5 @@
 <template>
   <div class="aboutTeam">
-    <navBar></navBar>
     <div class="aboutTeam__content">
       <div class="aboutTeam__info">
         <div class="aboutTeam__title">Немного о нас</div>
@@ -22,17 +21,11 @@
         </div>
       </div>
     </div>
-    <foot></foot>
   </div>
 </template>
 <script>
-import foot from "./footerForPages.vue";
-import navBar from "./nav-bar.vue";
 export default {
-  components: {
-    navBar,
-    foot,
-  },
+  components: {},
   data() {
     return {
       roadmap: [
@@ -73,19 +66,20 @@ export default {
 <style>
 .aboutTeam {
   width: 100%;
-  background: url("./../../res/fon2.png");
+  background: url("./../../resources/fon2.png");
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
-  background-position: top;
+  background-position-y: 100%;
+   
 }
 .aboutTeam__content {
   width: 85%;
   margin: 0 auto;
-  padding-bottom: 330px;
 }
 .aboutTeam__info {
-  margin-bottom: 900px;
+  margin-bottom: 850px;
+  padding-top: 160px;
+  width: 840px;
 }
 .aboutTeam__title {
   font-style: normal;
@@ -95,7 +89,6 @@ export default {
   margin-bottom: 54px;
   font-family: "Roboto", sans-serif;
   color: #4f4f4f;
-  margin-top: 160px;
 }
 .aboutTeam__subtitle {
   font-family: "Roboto", sans-serif;
@@ -106,6 +99,10 @@ export default {
   color: #4f4f4f;
   font-feature-settings: "pnum" on, "lnum" on;
   margin-bottom: 51px;
+}
+.aboutTeam__roadmap{
+    padding-bottom: 160px;
+    width: 700px;
 }
 .roadmap__information {
   margin-bottom: 44px;
@@ -131,6 +128,7 @@ export default {
 }
 .roadmap {
   display: flex;
+  
 }
 .roadmap__image {
   width: 25px;

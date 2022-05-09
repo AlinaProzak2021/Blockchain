@@ -1,6 +1,5 @@
 <template>
   <div class="homePage">
-    <navBar></navBar>
     <div class="homePage__content">
       <div class="homePage__about">
         <div class="homePage__title">Трекер привычек? Круче!</div>
@@ -29,38 +28,31 @@
         </div>
       </div>
     </div>
-    <foot></foot>
   </div>
 </template>
 <script>
-import foot from './footerForPages.vue'
-import navBar from "./nav-bar.vue";
 export default {
-  components: {
-    navBar,
-     foot
-  },
+  components: {},
 };
 </script>
 <style>
 .homePage {
   width: 100%;
-  background: url("./../../res/fon1(1).png");
+  background: url("./../../resources/fon1.png");
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
-  
+  background-position-y: 50%;
 }
 .homePage__content {
   width: 85%;
   margin: 0 auto;
-  padding-bottom: 330px;
+  padding-top: 184px;
 }
 .homePage__about {
   width: 640px;
   display: flex;
   flex-direction: column;
-  margin-top: 184px;
+  
 }
 .homePage__about:first-child {
   margin-bottom: 460px;
@@ -89,7 +81,7 @@ export default {
   margin-bottom: 51px;
 }
 .homePage__subtitle__mb0 {
-  margin-bottom: 0;
+   margin-bottom: 76px;
 }
 .homePage__button {
   border: 8px solid #4f4f4f;

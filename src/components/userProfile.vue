@@ -1,11 +1,15 @@
 <template>
   <div class="userPage">
-    <navBar></navBar>
     <div class="userPage__content">
       <div class="userPage__aboutUser">
         <div class="userPage__personalInfo">
           <div class="userPage__title">Венера Жаворонкова</div>
-          <div class="userPage__subtitle">Текущие цели отсутствуют</div>
+          <div class="userPage__subtitle" v-if="countGoal == ''">
+            Текущие цели отсутствуют
+          </div>
+          <div class="userPage__subtitle" v-else>
+            Имеются текущие цели : {{ countGoal }}
+          </div>
           <div class="userPage__button">Добавить цель</div>
         </div>
         <div class="userPage__userPhoto"></div>
@@ -53,12 +57,7 @@
             <div class="userPage__subtitle userPage__subtitle__fw600">
               Готов внести сумму :
             </div>
-            <input
-              type="text"
-              placeholder="## ETH"
-              class="inputEth"
-              v-model="amountEth"
-            />
+            <input type="text" placeholder="## ETH" v-model="amountEth" />
           </div>
           <div class="userPage__inputData userPage__inputData__borderNone">
             <div class="userPage__subtitle userPage__subtitle__fw600">
@@ -99,7 +98,11 @@
             <div class="userPage__subtitle userPage__subtitle__fw600">
               Пробежка :
             </div>
-            <input type="text" placeholder="впишите км"  v-model="currentMountKm"/>
+            <input
+              type="text"
+              placeholder="впишите км"
+              v-model="currentMountKm"
+            />
           </div>
           <div class="userPage__button userPage__button__center">
             Синхронизировать
@@ -107,17 +110,11 @@
         </form>
       </div>
     </div>
-    <foot></foot>
   </div>
 </template>
 <script>
-import navBar from "./nav-bar.vue";
-import foot from "./footerForPages.vue";
 export default {
-  components: {
-    navBar,
-    foot,
-  },
+  components: {},
   data() {
     return {
       startMonth: "",
@@ -126,7 +123,8 @@ export default {
       amountEth: "",
       amountKilometer: "",
       currentDate: "",
-      currentMountKm: ""
+      currentMountKm: "",
+      countGoal: "",
     };
   },
   methods: {
@@ -138,11 +136,7 @@ export default {
         amountKilometer !== ""
       ) {
         this.iscompletedForm = true;
-        this.startMonth = startMonth;
-        this.finalMonth = finalMonth;
-
-        this.amountEth = amountEth;
-        this.amountKilometer = amountKilometer;
+        this.countGoal++;
         console.log("Все поля заполнены");
       } else {
         console.log("Одно из полей не заполнено!!");
@@ -154,16 +148,14 @@ export default {
 <style>
 .userPage {
   width: 100%;
-  background: url("./../../res/fon3.png");
+  background: url("./../../resources/fon3.png");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: top;
-  position: relative;
+  background-position-y: 55%;
 }
 .userPage__content {
   width: 85%;
   margin: 0 auto;
-  padding-bottom: 330px;
 }
 .userPage__aboutUser {
   margin-top: 80px;
@@ -210,11 +202,12 @@ export default {
   border-radius: 3px;
   width: 512px;
   height: 512px;
-  background: url("./../../res/im.png");
+  background: url("./../../resources/Rectangle.png");
 }
 .userPage__form {
   width: 1052px;
   margin: 0 auto;
+  margin-bottom: 86px;
 }
 .userPage__subtitle__fw600 {
   font-weight: 600;
@@ -241,21 +234,15 @@ input {
   border: none;
   outline: none;
   font-size: 24px;
-  width: 190px;
+  width: 200px;
 }
-.inputKm {
-  width: 140px;
-}
-.inputEth {
-  width: 140px;
-}
+
 input[type="checkbox"] {
   width: 30px;
   height: 40px;
   border: 4px solid #333333;
   border-radius: 3px;
 }
-
 ::placeholder,
 .goalDate {
   font-family: "Roboto", sans-serif;
@@ -265,6 +252,7 @@ input[type="checkbox"] {
   line-height: 120%;
   color: #333333;
   text-align: right;
+  padding-right: 2px;
 }
 .userPage__inputData__borderNone {
   border: none;

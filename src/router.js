@@ -1,33 +1,30 @@
-//  import HomePage from './components/homePage'
-//  import aboutUs from './components/aboutUsPage'
-//  import userPage from './components/userProfile'
+import Vue from 'vue';
+import Router from 'vue-router';
+ import HomePage from './components/homePage'
+ import aboutUs from './components/aboutUsPage'
+ import userPage from './components/userProfile'
 
-//  import {
-//      createRouter,
-//      createWebHistory
-//  } from 'vue-router'
 
-//  const routes = [{
-//          path: '/',
-//          name: 'homePage',
-//          component: HomePage
+Vue.use(Router);
 
-//      },
-//      {
-//          path: '/aboutUs',
-//          name: 'aboutUs',
-//          component: aboutUs
-//      },
-//      {
-//          path: '/userPage',
-//          name: 'userPage',
-//          component: userPage
-//      }
-//  ]
+export const router = new Router({
+  mode: 'history',
+  routes: [{
+      path: '/',
+      name: 'homePage',
+      component: HomePage
 
-//  const router = createRouter({
-//      history: createWebHistory(process.env.BASE_URL),
-//      routes
-//  })
+    },
+    {
+      path: '/aboutUs',
+      name: 'aboutUs',
+      component: aboutUs
+    },
+    {
+      path: '/userPage',
+      name: 'userPage',
+      component: userPage
+    }
+  ]
 
-//  export default router
+});

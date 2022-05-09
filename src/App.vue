@@ -1,21 +1,25 @@
- 
 <template>
   <div id="app">
-    <div class="main-page">
-      <userProfile></userProfile>
+    <div class="content-rout">
+      <navBar></navBar>
+      <router-view> </router-view>
+      <foot></foot>
     </div>
+    
   </div>
+  
 </template>
 <script>
-import userProfile from "./components/userProfile.vue";
+import navBar from "./components/nav-bar.vue";
+import foot from "./components/footerForPages.vue"
 export default {
-  name: "App",
+  name: "app",
   components: {
-    userProfile,
+    navBar,
+    foot
   },
 };
 </script>
-
 <style>
 * {
   margin: 0;
@@ -30,9 +34,8 @@ body {
   width: 100%;
   height: 100%;
 }
-.main-page {
+.content-rout {
   width: 100%;
   height: 100%;
 }
 </style>
- 
