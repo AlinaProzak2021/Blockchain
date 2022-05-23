@@ -5,18 +5,16 @@
       <router-view> </router-view>
       <foot></foot>
     </div>
-    
   </div>
-  
 </template>
 <script>
 import navBar from "./components/nav-bar.vue";
-import foot from "./components/footerForPages.vue"
+import foot from "./components/footerForPages.vue";
 export default {
   name: "app",
   components: {
     navBar,
-    foot
+    foot,
   },
 };
 </script>
@@ -38,4 +36,5 @@ body {
   width: 100%;
   height: 100%;
 }
+
 </style>

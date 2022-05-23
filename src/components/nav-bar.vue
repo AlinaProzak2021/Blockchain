@@ -72,6 +72,10 @@ export default {};
   width: 56px;
   height: 56px;
 }
+.nav-bar__logo img {
+  width: 100%;
+  height: 100%;
+}
 .nav-bar__item {
   font-family: "Roboto", sans-serif;
   font-style: normal;
@@ -83,5 +87,68 @@ export default {};
 a {
   text-decoration: none;
   color: #4f4f4f;
+}
+@media (max-width: 1366px) {
+  .nav-bar {
+    height: 118px;
+  }
+  .nav-bar__auth {
+    width: 200px;
+  }
+  .nav-bar__sign-in {
+    width: 108px;
+    height: 37px;
+    border: 2px solid #333333;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+  .nav-bar__items {
+    width: 350px;
+  }
+  .nav-bar__item {
+    font-size: 18px;
+    line-height: 120%;
+  }
+}
+@media (max-width: 768px) {
+  .nav-bar {
+    height: 67px;
+  }
+  .nav-bar__auth {
+    width: 150px;
+  }
+  .nav-bar__sign-in {
+    width: 93px;
+    height: 32px;
+  }
+  .nav-bar__logo {
+    width: 31px;
+    height: 31px;
+  }
+  .nav-bar__items {
+    width: 250px;
+  }
+}
+@media (max-width: 425px) {
+  .nav-bar__auth {
+    width: 100px;
+  }
+  .nav-bar__sign-in {
+    width: 46px;
+    height: 19px;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .nav-bar__logo {
+    width: 31px;
+    height: 31px;
+  }
+  .nav-bar__items {
+    width: 150px;
+  }
+  .nav-bar__item {
+    font-size: 14px;
+  }
 }
 </style>

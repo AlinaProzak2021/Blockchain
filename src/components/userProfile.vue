@@ -3,7 +3,16 @@
     <div class="userPage__content">
       <div class="userPage__aboutUser">
         <div class="userPage__personalInfo">
-          <div class="userPage__title">Венера Жаворонкова</div>
+          <div v-if="nameIsChanged == false" class="userPage__userName">
+            {{ userName }}
+            <div class="userPage__changeName" @click="editName()">pед.</div>
+          </div>
+          <div v-else class="userPage__inputName">
+            <input type="text" placeholder="Введите имя" v-model="userName" />
+            <div class="userPage__changeName" @click="saveNewName(userName)">
+              pед.
+            </div>
+          </div>
           <div class="userPage__subtitle" v-if="countGoal == ''">
             Текущие цели отсутствуют
           </div>
@@ -12,7 +21,9 @@
           </div>
           <div class="userPage__button">Добавить цель</div>
         </div>
-        <div class="userPage__userPhoto"></div>
+        <div class="userPage__userPhoto">
+          <div class="add-photo">Загрузить фото</div>
+        </div>
       </div>
       <div class="userPage__userGoal" v-if="iscompletedForm == false">
         <div class="userPage__title userPage__title__m64">Моя цель</div>
@@ -48,7 +59,7 @@
             </div>
             <input
               type="text"
-              placeholder="впишите км"
+              placeholder="##км"
               v-model="amountKilometer"
               class="inputKm"
             />
@@ -57,9 +68,20 @@
             <div class="userPage__subtitle userPage__subtitle__fw600">
               Готов внести сумму :
             </div>
-            <input type="text" placeholder="## ETH" v-model="amountEth" />
+            <input
+              type="text"
+              class="inputEth"
+              placeholder="##ETH"
+              v-model="amountEth"
+            />
           </div>
-          <div class="userPage__inputData userPage__inputData__borderNone">
+          <div
+            class="
+              userPage__inputData
+              userPage__inputData__borderNone
+              userPage__inputData__df
+            "
+          >
             <div class="userPage__subtitle userPage__subtitle__fw600">
               Даю согласию на обработку персональных данных :
             </div>
@@ -71,7 +93,7 @@
               enteGoal(startMonth, finalMonth, amountEth, amountKilometer)
             "
           >
-            Внести мою цель
+            Сохранить мою цель
           </div>
         </form>
       </div>
@@ -105,7 +127,7 @@
             />
           </div>
           <div class="userPage__button userPage__button__center">
-            Синхронизировать
+            Сохранить прогресс
           </div>
         </form>
       </div>
@@ -125,9 +147,21 @@ export default {
       currentDate: "",
       currentMountKm: "",
       countGoal: "",
+      userName: "Пользователь",
+      nameIsChanged: false,
     };
   },
   methods: {
+    editName() {
+      this.nameIsChanged = !this.nameIsChanged;
+      this.userName = "";
+      console.log(this.userName);
+      console.log(this.nameIsChanged);
+    },
+    saveNewName(newName) {
+      this.userName = newName;
+      this.nameIsChanged = !this.nameIsChanged;
+    },
     enteGoal(startMonth, finalMonth, amountEth, amountKilometer) {
       if (
         startMonth !== "" &&
@@ -164,6 +198,35 @@ export default {
   justify-content: space-between;
   margin-bottom: 244px;
 }
+.userPage__userName {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 100%;
+  display: flex;
+  max-width: 300px;
+  margin-bottom: 25px;
+}
+.userPage__changeName {
+  font-size: 24px;
+  font-weight: 300;
+  margin-left: 15px;
+}
+.userPage__inputName {
+  display: flex;
+  margin-bottom: 25px;
+}
+.userPage__inputName > input {
+  width: 150px;
+  border: 2px solid #333333;
+  margin-right: 10px;
+  font-size: 20px;
+  border-radius: 3px;
+  height: 35px;
+  padding-left: 5px;
+}
+
 .userPage__title {
   font-family: "Roboto", sans-serif;
   font-style: normal;
@@ -203,6 +266,22 @@ export default {
   width: 512px;
   height: 512px;
   background: url("./../../resources/Rectangle.png");
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.add-photo {
+  width: 100%;
+  height: 90px;
+  background: rgba(0, 0, 0, 0.65);
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .userPage__form {
   width: 1052px;
@@ -234,11 +313,15 @@ input {
   border: none;
   outline: none;
   font-size: 24px;
-  width: 200px;
 }
-
+.inputKm {
+  width: 140px;
+}
+.inputEth {
+  width: 80px;
+}
 input[type="checkbox"] {
-  width: 30px;
+  width: 44px;
   height: 40px;
   border: 4px solid #333333;
   border-radius: 3px;
@@ -263,5 +346,275 @@ input[type="checkbox"] {
 }
 .userPage__button__center {
   margin: 0 auto;
+}
+@media (max-width: 1366px) {
+  .userPage__title {
+    font-size: 36px;
+  }
+  .userPage__subtitle {
+    font-size: 24px;
+  }
+  .userPage__button {
+    width: 286px;
+    height: 78px;
+    font-size: 24px;
+  }
+  .userPage__form {
+    width: 770px;
+    margin: 0 auto;
+    margin-bottom: 60px;
+  }
+  .userPage__title__m64 {
+    margin-bottom: 36px;
+  }
+  .userPage__subtitle__fw600 {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 48px;
+  }
+  input {
+    font-size: 20px;
+  }
+}
+@media (max-width: 1024px) {
+  .userPage__title {
+    font-size: 26px;
+  }
+  .userPage__subtitle {
+    font-size: 17px;
+    margin-bottom: 36px;
+  }
+  .userPage__button {
+    width: 214px;
+    height: 51px;
+    font-size: 20px;
+    border: 4px solid #333333;
+  }
+  .userPage__form {
+    width: 525px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+  }
+  .userPage__title__m64 {
+    margin-bottom: 36px;
+  }
+  .userPage__subtitle__fw600 {
+    font-weight: 600;
+
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+  input {
+    font-size: 16px;
+  }
+  .userPage__userPhoto {
+    border-radius: 3px;
+    width: 270px;
+    height: 270px;
+    background-size: contain;
+  }
+  .add-photo {
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+  }
+  ::placeholder,
+  .goalDate {
+    font-size: 16px;
+    text-align: left;
+  }
+  .goalDate > input {
+    width: 20px;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+  .goalDate {
+    width: 130px;
+  }
+  .inputKm {
+    width: 90px;
+  }
+  .inputEth {
+    width: 60px;
+  }
+}
+@media (max-width: 768px) {
+  .userPage {
+    background: url("./../../resources/aboutUs768.png");
+  }
+  .userPage__aboutUser {
+    margin-top: 136px;
+    margin-bottom: 170px;
+    flex-wrap: wrap-reverse;
+  }
+  .userPage__personalInfo {
+    margin: 0 auto;
+  }
+  .userPage__title {
+    font-size: 28px;
+  }
+  .userPage__subtitle {
+    font-size: 24px;
+    margin-bottom: 27px;
+  }
+  .userPage__button {
+    width: 192px;
+    height: 48px;
+    font-size: 18px;
+    border: 4px solid #333333;
+  }
+
+  .userPage__form {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 50px;
+  }
+  .userPage__title__m64 {
+    margin-bottom: 36px;
+  }
+  .userPage__subtitle__fw600 {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+  input {
+    font-size: 20px;
+  }
+  .userPage__userPhoto {
+    border-radius: 3px;
+    width: 196px;
+    height: 196px;
+    background-size: contain;
+    margin: 0 auto;
+    margin-bottom: 50px;
+  }
+  .add-photo {
+    width: 100%;
+    height: 35px;
+    font-size: 16px;
+  }
+  ::placeholder,
+  .goalDate {
+    font-size: 20px;
+    text-align: left;
+  }
+  .goalDate > input {
+    width: 25px;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+  .goalDate {
+    width: 150px;
+  }
+  .inputKm {
+    width: 55px;
+  }
+  .inputEth {
+    width: 70px;
+  }
+  input[type="checkbox"] {
+    width: 36px;
+    height: 33px;
+  }
+}
+@media (max-width: 425px) {
+  .userPage {
+    background: none;
+  }
+  .userPage__aboutUser {
+    margin-top: 35px;
+    margin-bottom: 50px;
+    width: 100%;
+  }
+  .userPage__personalInfo {
+    margin: 0 auto;
+  }
+  .userPage__title {
+    font-size: 24px;
+    text-align: center;
+  }
+  .userPage__subtitle {
+    font-size: 14px;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  .userPage__personalInfo {
+    width: 100%;
+  }
+  .userPage__button {
+    width: 100%;
+    min-width: 200px;
+    height: 48px;
+    font-size: 18px;
+    border: 2px solid #333333;
+  }
+
+  .userPage__form {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 65px;
+  }
+  .userPage__title__m64 {
+    margin-bottom: 36px;
+  }
+  .userPage__subtitle__fw600 {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 9px;
+    text-align: left;
+  }
+  .userPage__inputData {
+    border-bottom: 2px solid #333333;
+    display: block;
+    margin-bottom: 24px;
+  }
+  input {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  .userPage__userPhoto {
+    margin: 0 auto;
+    margin-bottom: 32px;
+  }
+  .add-photo {
+    width: 100%;
+    height: 35px;
+    font-size: 16px;
+  }
+  ::placeholder,
+  .goalDate {
+    font-size: 14px;
+    text-align: left;
+  }
+  .goalDate > input {
+    width: 25px;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+  .goalDate {
+    width: 150px;
+  }
+  .inputKm {
+    width: 55px;
+  }
+  .inputEth {
+    width: 70px;
+  }
+  input[type="checkbox"] {
+    width: 30px;
+    height: 27px;
+  }
+  .userPage__inputData__df {
+    display: flex;
+  }
+  .userPage__userName {
+    margin: 0 auto;
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+  .userPage__changeName {
+    font-size: 18px;
+  }
 }
 </style>
